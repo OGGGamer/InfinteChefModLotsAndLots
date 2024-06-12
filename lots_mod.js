@@ -1,10 +1,15 @@
-addTool("chocolate_melter", {
-    func: function(placed) { 
-        placed.temp = 60; // set melting temperature
-    },
-    onSelect: function() { alert("Use the Chocolate Melter to melt chocolate!"); },
-    whileOn: function() { console.log("Chocolate Melter is active."); },
-    onDeselect: function() { alert("Chocolate Melter deactivated."); },
-    shape: "square",
-    spin: false
-});
+addTool("red_dyer", {
+    func: function(placed) { placed.h = 0; },
+    shape:"liquid"
+})
+
+// Add a tool with more properties
+addTool("red_dyer", {
+    func: function(placed) { placed.h = 0; },
+    onSelect: function() { alert("Use on an ingredient to dye it red!"); },
+    whileOn: function() { console.log("Dyer selected."); },
+    onDeselect: function() { alert("Goodbye!"); },
+    onClick: function(x,y) { console.log(x,y) },
+    shape:"liquid",
+    spin: true
+})
