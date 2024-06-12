@@ -59,6 +59,13 @@ addIngredient("cheese_burger", {
     shape: "burger"
 });
 
+// Change attributes of existing ingredients
+editIngredient("tomato", {
+    color: "#ff6347", // tomato red
+    innerColor: "#f8f9fa", // light gray
+    shape: "slice"
+});
+
 // Add recipes
 addRecipe("bread+cheese", "grilled_cheese");
 addRecipe("cake+butter?+chocolate", "chocolate_cake");
