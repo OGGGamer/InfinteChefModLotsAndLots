@@ -1,10 +1,35 @@
-// Add a basic ingredient
+// Add basic ingredients
 addIngredient("tomato", {
     color: "#ff6347", // tomato red
     type: "vegetable"
 });
 
-// Add a detailed ingredient with custom properties
+addIngredient("cheese", {
+    color: "#ffd700", // gold
+    type: "dairy"
+});
+
+addIngredient("chocolate", {
+    color: "#7b3f00", // chocolate brown
+    type: "sweet"
+});
+
+addIngredient("bread", {
+    color: "#deb887", // bread brown
+    type: "grain"
+});
+
+addIngredient("butter", {
+    color: "#ffdab9", // butter yellow
+    type: "dairy"
+});
+
+addIngredient("egg", {
+    color: "#ffff66", // egg yellow
+    type: "protein"
+});
+
+// Add detailed ingredients with custom properties
 addIngredient("sliced_tomato", {
     color: "#ff6347", // tomato red
     innerColor: "#f8f9fa", // light gray
@@ -12,23 +37,34 @@ addIngredient("sliced_tomato", {
     shape: "slice"
 });
 
-// Add an ingredient with reactions
-addIngredient("cheese", {
-    type: "dairy",
+addIngredient("grilled_cheese", {
     color: "#ffd700", // gold
-    reactions: {
-        bread: { set1: "sandwich" },
-        meat: { set1: "burger" }
-    }
+    innerColor: "#deb887", // bread brown
+    type: "sandwich",
+    shape: "sandwich_grilled"
 });
 
-// Add a simple recipe
-addRecipe("bread+cheese", "cheese sandwich");
+addIngredient("chocolate_cake", {
+    color: "#7b3f00", // chocolate brown
+    innerColor: "#ffff66", // egg yellow
+    type: "cake",
+    shape: "cake"
+});
 
-// Add a recipe with an optional ingredient
-addRecipe("cake+butter?+chocolate", "chocolate cake");
+// Add ingredients with reactions
+addIngredient("cheese_burger", {
+    color: "#ffd700", // gold
+    innerColor: "#deb887", // bread brown
+    type: "burger",
+    shape: "burger"
+});
 
-// Add a tool to interact with ingredients
+// Add recipes
+addRecipe("bread+cheese", "grilled_cheese");
+addRecipe("cake+butter?+chocolate", "chocolate_cake");
+addRecipe("bread+cheese+meat", "cheese_burger");
+
+// Add tools
 addTool("knife", {
     func: function(placed) {
         placed.type = "sliced_" + placed.type;
@@ -36,12 +72,10 @@ addTool("knife", {
     shape: "knife"
 });
 
-// Add a tool with more properties
 addTool("spatula", {
     func: function(placed) {
         console.log("Using spatula on ingredient:", placed);
-        // Example action: flip ingredient
-        placed.flip = !placed.flip;
+        placed.flip = !placed.flip; // Example action: flip ingredient
     },
     onSelect: function() { alert("Select an ingredient to flip with the spatula!"); },
     whileOn: function() { console.log("Spatula selected."); },
@@ -50,3 +84,5 @@ addTool("spatula", {
     shape: "spatula",
     spin: true
 });
+
+// Add more ingredients, recipes, and tools as desired
