@@ -1,9 +1,10 @@
-addIngredient("mercury",{
-    type:"liquid",
-    color:"#c0c0c0",
-    reactions: {
-        meat: { set1:"broth" },
-        vegetable: { set1:"broth", tempMin:60 }
-    }
+addTool("chocolate_melter", {
+    func: function(placed) { 
+        placed.temp = 60; // set melting temperature
+    },
+    onSelect: function() { alert("Use the Chocolate Melter to melt chocolate!"); },
+    whileOn: function() { console.log("Chocolate Melter is active."); },
+    onDeselect: function() { alert("Chocolate Melter deactivated."); },
+    shape: "square",
+    spin: false
 });
-// Add more ingredients, recipes, and tools as desired
